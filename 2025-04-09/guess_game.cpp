@@ -10,12 +10,10 @@ int main(void){
         {
             std::cout << "Adivinaste\n";
             break;
+        } else if ((lambda>100)||(lambda<1)) {
+            std::cout << "Numero invalido\n";
         } else if (lambda>numero) {
             std::cout << "Te pasaste\n";
-        //} 
-        /*else if ((lambda>100)||(lambda<1)) {
-            std::cout << "Numero invalido":
-        }*/
         } else {
             std::cout << "Te quedaste corto\n";            
         }

@@ -8,9 +8,10 @@ int main(void){
         if (lambda==numero)
         {
             std::cout << "Adivinaste\n";
+        } else if (lambda>numero) {
+            std::cout << "Te pasaste\n";
         } else {
-            std::cout << "Intentalo denuevo\n";
-            std::cin >> lambda;
+            std::cout << "Te quedaste corto\n";            
         }
     return 0;
 }

@@ -1,20 +1,29 @@
 #include <iostream>
 #include <limits>
+#include <cstdlib>
+#include <random>
 //para adivinar un número
 
 //declaración
-void play(void); 
+void play(int min_value, int max_value);
 
 int main (void){
-    play();
+    play(1,100);
+    play (1,100);
     return 0;
 }
 
 //implementación
-void play(void){
-    const int numero=10; //const lo hace de solo lectura, no puede cambiar
-    const int liminf=1;
-    const int limsup=100;
+void play(int min_value,int max_value){
+    std::cout << "Que comience el juego\n";
+    //int seed=rand();
+    //const int numero=min_value+(rand() % (max_value-min_value+1)); //const lo hace de solo lectura, no puede cambiar ; numero aleatorio
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int>distro(min_value,max_value);
+    const int numero=distro(gen);
+    const int liminf=min_value;
+    const int limsup=max_value;
     int lambda=numero+1;
     while(lambda!=numero){
     std::cout << "Adivina el numero entre " << liminf << " y " << limsup << "\n";

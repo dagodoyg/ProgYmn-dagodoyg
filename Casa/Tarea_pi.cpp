@@ -10,8 +10,6 @@
 
 void pi_approx(void); 
 double formula(int k);
-bool validation(double z);
-
 
 //Llamado de la función.
 
@@ -29,25 +27,42 @@ void pi_approx(void){
     double abs_deviation{0};
     double lim {0};
     char confirm;
+    bool val=false;
+
 
     //Validación de la entrada.
     do {
-        std::cout << "Ingrese un limite valido para la suma, debe ser un numero entero positivo o 0.\n"; //Pide que se especifique cuántos términos calcular.
+        std::cout << "\033[32mIngrese un limite valido para la suma, debe ser un numero entero positivo o 0.\n\033[0m"; //Pide que se especifique cuántos términos calcular.
         std::cin >> lim;
-    } while (validation(lim)==false);
+
+        if (std::isinf(lim) || std::cin.fail()){ //Aviso de error
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cerr << "\033[31mError: el limite ingresado no es valido, limite establecido por defecto a 20. \033[0m\n";
+            lim=20;
+            val=true;
+        } /*else if ( std::cin.fail()){ //Solo se aceptan números.
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            val=false;
+        } */ else if (lim<0){ //No numeros negativos.
+            val=false;
+            std::cerr << "\033[31mError: El numero ingresado debe ser POSITIVO.\033[0m\n";
+        } else {
+            val=true;
+        }
+        
+    } while (val==false);
 
 
     //Revisión de los límites.
     double decimal_part=std::modf(lim,&lim); //Existen maneras de hacer esto más eficiente pero quiero mantenerlo como 
                                                 //double para reducir el riesgo de under/over-flow
     if( decimal_part!=0 ){ //Revisa si hay decimales y los retira.;
-        std::cout << "El limite ingresado no es un entero, se ha truncado a " << lim << "\n";
-    }  else if ( std::isinf(std::abs(lim)) ) { //Revisa si el numero ingresado causa un overflow.
-        std::cout << "Overflow en la entrada, limite establecido por defecto a 0";
-        lim=0;
+        std::cout << "\033[34mEl limite ingresado no es un entero, se ha truncado a " << lim << "\n\033[0m";
     }  else if (lim>1e3) { //Aviso sobre el tiempo de cálculo.
-        std::cout << "Usted solicito mas de "<<1e3<<" terminos, lo cual es innecesario.\n"
-                    << "El limite maximo se ha establecido en " << 1e3 <<"\n";
+        std::cout << "\033[34mUsted solicito mas de "<<1e3<<" terminos, lo cual es innecesario.\n"
+                    << "El limite maximo se ha establecido en " << 1e3 <<"\n\033[0m";
         //No va a mostar una mejor aproximación más allá de lim=10 pues está puesto para
         //que solo se muestren hasta 16 dígitos en la terminal de todas formas.
 
@@ -64,7 +79,7 @@ void pi_approx(void){
     abs_deviation = std::abs(1-(sum/M_PI));
 
     //Print de los resultados en la terminal
-    std::cout<< "Hasta el " << lim;
+    std::cout<< "\033[32mHasta el " << lim;
 
     std::ostringstream result_text;
 
@@ -72,25 +87,8 @@ void pi_approx(void){
     std::cout.setf(std::ios::scientific); //Se piden los resultados en notación científica.
 
     std::cout << "-esimo termino de la serie, pi es aproximadamente " << sum << "\n"
-                << "La diferencia relativa con respecto al valor esperado es " << abs_deviation << "\n";
+                << "La diferencia relativa con respecto al valor esperado es " << abs_deviation << "\033[0m\n";
 
-}
-
-bool validation(double z){
-    bool val=false;
-
-    //Validación de la entrada.
-
-    if (z<0){ //No numeros negativos.
-        val=false;
-    } else if ( std::cin.fail() ){ //Solo se aceptan números.
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        val=false;
-    } else {
-        val=true;
-    }
-    return val;
 }
 
 

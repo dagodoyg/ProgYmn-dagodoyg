@@ -3,10 +3,10 @@
 
 bool is_prime(long n);
 
-int main(void){
-    long lim_inf {300};
-    long lim_sup {400-6};
-    for (long ii=lim_inf;ii<=lim_sup;ii++){
+int main(int argc, char **argv){
+    int lim_inf=std::stoi(argv[1]);
+    int lim_sup=std::stoi(argv[2]);
+    for (int ii=lim_inf;ii<=lim_sup-6;ii++){
         if( is_prime(ii) & is_prime(ii+6)){
             std::cout << "\033[32m( " << ii << " , " << ii+6 << " ) son dobletes sexy primes\033[0m \n" ;
         }

@@ -26,7 +26,6 @@ void pi_approx(void){
     double sum{0};
     double abs_deviation{0};
     double lim {0};
-    char confirm;
     bool val=false;
 
 

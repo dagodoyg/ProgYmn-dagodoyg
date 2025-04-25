@@ -12,10 +12,12 @@ int main(int argc, char **argv){
     } else {
         for ( unsigned long long int ii = 2; ii<=std::sqrt(num); ii++)
         {
-            if ( num%ii==0 && is_prime(num/ii)){      
+            if ( num%ii==0 ){
+            if( is_prime(num/ii)){      
                 result=num/ii;
                 break;
             } 
+            }
         }
     } 
 

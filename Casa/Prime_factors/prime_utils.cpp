@@ -9,3 +9,23 @@ bool is_prime(unsigned long long int n){
     }
     return true;
 }
+
+unsigned long long int great_prime_factor(unsigned long long int num){
+    unsigned long long int result {0};
+    //unsigned long long int n{num}
+    if (is_prime(num))
+    {
+        result=num;
+    } else {
+        for ( unsigned long long int ii = 2; ii<=std::sqrt(num); ii++)
+        {
+            while ( num%ii==0 ){  
+                if ( is_prime(num/ii) ){
+                    result=num/ii;
+                    break;
+                } else { num=num/ii; }
+            } 
+        }
+    }
+    return result;
+}

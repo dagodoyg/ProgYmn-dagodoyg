@@ -2,25 +2,7 @@
 #include <iostream>
 
 int main(int argc, char **argv){
-
     unsigned long long int num = std::stoull(argv[1]);
-    unsigned long long int result {0};
-
-    if (is_prime(num))
-    {
-        result=num;
-    } else {
-        for ( unsigned long long int ii = 2; ii<=std::sqrt(num); ii++)
-        {
-            if ( num%ii==0 ){
-            if( is_prime(num/ii)){      
-                result=num/ii;
-                break;
-            } 
-            }
-        }
-    } 
-
-    std::cout << result << "\n";
+    std::cout << great_prime_factor(num) << "\n";
     return 0;
 }

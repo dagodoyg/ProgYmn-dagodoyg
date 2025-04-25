@@ -5,7 +5,7 @@
 
 
 // declaration
-void test(void);
+//void test(void);
 
 int main(int argc, char **argv){
 

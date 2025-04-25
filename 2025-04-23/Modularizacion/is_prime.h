@@ -1,3 +1,3 @@
 #pragma once
 #include <cmath>
-bool isprime(long int n);
+bool is_prime(long int n);

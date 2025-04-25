@@ -12,7 +12,6 @@ bool is_prime(unsigned long long int n){
 
 unsigned long long int great_prime_factor(unsigned long long int num){
     unsigned long long int result {0};
-    //unsigned long long int n{num}
     if (is_prime(num))
     {
         result=num;

@@ -1,4 +1,4 @@
-#include "prime_utils.h"
+#include "functions.h"
 
 int main(int argc, char **argv){
     long long int num = std::stoll(argv[1]);
@@ -7,6 +7,6 @@ int main(int argc, char **argv){
 }
 
 
-/*Nota: estoy consciente de que realmente no hemos visto el tipo de variable long long en clase (creo) pero 
-uno de los casos de prueba del encabezado, 600851475243, se sale del rango de los long así que lo dejé como long long
+/*Nota:
+unos de los casos de prueba del encabezado 1 y 2, dan lugar a valores que salen del rango de los long así que los dejé como long long
 */

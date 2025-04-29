@@ -4,9 +4,11 @@ bool is_prime(long long int n){
 
     if(n<=1){ 
         return false; 
+    } else if (n%2==0 && n!=2){
+        return false;
     }
-
-    for(long long int ii=2;ii<=std::sqrt(n);ii++){
+    
+    for(unsigned long long int ii=3;ii<=sqrt(n);ii+=2){
         if( n%ii==0 ){
             return false;
         } 

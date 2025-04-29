@@ -14,8 +14,6 @@ int main(int argc, char **argv){
     return 0;
 }
 
-
-
 bool is_prime(long n){
  if(n<=1){ return false; }
  for(long ii=2;(ii*ii)<=n;ii++){

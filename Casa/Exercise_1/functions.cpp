@@ -19,7 +19,7 @@ bool is_prime( unsigned long long int n){
 
 long long int sum_primes_lt(long long int n){
     long long int sum {0};
-    for (long long int ii = 1; ii<=n; ii++){
+    for (long long int ii = 1; ii<n; ii++){
         if (is_prime(ii)){
             sum+=ii;
         }
@@ -128,4 +128,45 @@ long long int smaller_prime(long long int num){
     }
     
     return num;
+}
+
+long long int great_collatz(long long int num){
+    long long int great_term {0};
+    long long int aux {num};
+    while (num>1){
+        if (num%2==0){
+            num=num/2;
+        } else {
+            num=3*num+1;
+        }
+        if (num>aux){
+            aux=num;
+        }  
+    }
+    return aux;
+}
+
+long long int number_collatz(long long int num){
+    long long int length {1};
+    while (num>1){
+        if (num%2==0){
+            num=num/2;
+        } else {
+            num=3*num+1;
+        }
+        length+=1;
+    }
+    return length;
+}
+
+void sexy_primes_lt_p(long long int num){
+    if (num%2==0){
+        num--;
+    }
+
+    for ( long int ii = num-6; ii >=5; ii-=2){
+        if (is_prime(ii) && is_prime(ii+6)){
+            std::cout << ii << "   " << ii+6 << "\n";
+        }
+    }
 }

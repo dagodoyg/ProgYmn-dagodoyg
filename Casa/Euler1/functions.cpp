@@ -8,7 +8,7 @@ bool is_prime(long long int n){
         return false;
     }
     
-    for(unsigned long long int ii=3;ii<=sqrt(n);ii+=2){
+    for(long long int ii=3;ii<=sqrt(n);ii+=2){
         if( n%ii==0 ){
             return false;
         } 

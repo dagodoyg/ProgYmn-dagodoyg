@@ -9,9 +9,14 @@ int main(void){
     double x {1.234};
     double h {1.0e-10};
 
-    std::cout << forward_diff(x,h,f) << "\n";
-    std::cout << central_diff(x,h,f) << "\n";
-    std::cout << 2*x*cos(x*x) << "\n";
+    double forward = forward_diff(x,h,f);
+    double central = central_diff(x,h,f);
+    double exact = 2*x*cos(x*x);
+
+    std::cout << forward << "\n";
+    std::cout << central << "\n";
+    std::cout << exact << "\n";
+    std::cout << std::abs(1-forward/exact) << "   " << std::abs(1-central/exact) << "\n";
 }
 
 double f(double x){

@@ -41,3 +41,21 @@ int main(void){
 double f(double x){
     return exp(x);
 }
+
+
+
+/*
+Codigo de gnuplot útil
+
+set logscale x 
+set key autotitle columnhead
+splot "data.txt" u 1:2:3 title "" w p pt 7 \\3d
+plot "data.txt" u 1:2 title "" w l lt 7 \\2d lineas
+plot "data.txt" u 1:2 , "data.txt" u 3:4 \\2d varios data sets
+        // 1:2:3 = x_coord:y_coord:z_coord
+set autoscale
+cd "fold1/fold2/.../foldn" \\ir a la carpeta, importantes las comillas
+help function
+set xlabel "x"
+
+*/

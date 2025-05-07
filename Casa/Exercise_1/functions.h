@@ -14,6 +14,7 @@ long long int smaller_prime(long long int num);
 long long int great_collatz(long long int num);
 long long int number_collatz(long long int num);
 void sexy_primes_lt_p(long long int num);
+long long int sec_great_prime_factor(long long int num);
 /*Nota:
 unos de los casos de prueba del encabezado 1 y 2, dan lugar a valores que salen del rango de los long así que los dejé como long long
 */

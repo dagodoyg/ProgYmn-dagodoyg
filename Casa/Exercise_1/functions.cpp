@@ -170,3 +170,16 @@ void sexy_primes_lt_p(long long int num){
         }
     }
 }
+
+long long int sec_great_prime_factor(long long int num){
+    long long int result {0};
+    long long int aux {0};
+
+    if (is_prime(num)){ 
+        std::cout << "el numero es primo, no hay mas factores primos\n";
+        return num; 
+    }
+    aux=num/great_prime_factor(num);
+    result=great_prime_factor(aux);
+    return result;
+}

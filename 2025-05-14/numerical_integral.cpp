@@ -90,3 +90,61 @@ double gauss_3(double a, double b, fptr fun){
     double result=w0*fun(m*x0+c)+w1*fun(m*x1+c)+w2*fun(m*x2+c);
     return result*m;
 }
+
+double gauss_5(double a, double b, fptr fun){
+    std::vector<double> x(5);
+    std::vector<double> w(5);
+    double result{0};
+
+    x[0]=-(1.0/3.0)*std::sqrt(5.0+2.0*std::sqrt(10.0/7.0));
+    x[1]=-(1.0/3.0)*std::sqrt(5.0-2.0*std::sqrt(10.0/7.0));
+    x[2]=0;
+    x[3]=(1.0/3.0)*std::sqrt(5.0-2.0*std::sqrt(10.0/7.0));
+    x[4]=(1.0/3.0)*std::sqrt(5.0+2.0*std::sqrt(10.0/7.0));
+
+    w[0]=(322.0-13.0*std::sqrt(70))/900.0;
+    w[1]=(322.0+13.0*std::sqrt(70))/900.0;
+    w[2]=128.0/225.0;
+    w[3]=(322.0+13.0*std::sqrt(70))/900.0;
+    w[4]=(322.0-13.0*std::sqrt(70))/900.0;
+
+    double m = (b-a)/2;
+    double c = (b+a)/2;
+
+    for(int ii{0};ii<=4;ii++){
+        result+=w[ii]*fun(m*x[ii]+c);
+    }
+
+    return m*result;
+}
+
+double gauss_7(double a, double b, fptr fun){
+    std::vector<double> x(7);
+    std::vector<double> w(7);
+    double result{0};
+
+    x[0]=0;
+    x[1]=0.4058451513773972;
+    x[2]=-0.4058451513773972;
+    x[3]=-0.7415311855993945;
+    x[4]=0.7415311855993945;
+    x[5]=-0.9491079123427585;
+    x[6]=0.9491079123427585;
+
+    w[0]=0.4179591836734694;
+    w[1]=0.3818300505051189;
+    w[2]=0.3818300505051189;
+    w[3]=0.2797053914892766;
+    w[4]=0.2797053914892766;
+    w[5]=0.1294849661688697;
+    w[6]=0.1294849661688697;
+
+    double m = (b-a)/2;
+    double c = (b+a)/2;
+
+    for(int ii{0};ii<=6;ii++){
+        result+=w[ii]*fun(m*x[ii]+c);
+    }
+
+    return m*result;
+}

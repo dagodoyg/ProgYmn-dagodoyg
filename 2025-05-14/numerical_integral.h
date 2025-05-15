@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include <functional>
+#include <vector>
 
 using fptr = std::function<double(double)>;
 using algptr = std::function<double(double, double, int, fptr)>;
@@ -11,3 +12,5 @@ double romberg(double a, double b, int m, fptr fun);
 double richardson(double a, double b, int N, fptr f, algptr alg, int alpha);
 double gauss_2(double a, double b, fptr fun);
 double gauss_3(double a, double b, fptr fun);
+double gauss_5(double a, double b, fptr fun);
+double gauss_7(double a, double b, fptr fun);

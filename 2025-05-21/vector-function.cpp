@@ -3,7 +3,6 @@
 #include <string>
 
 double average(const std::vector<double> & x);
-void initialize(std::vector<double> & data);
 
 int main(int argc , char **argv)
 {
@@ -19,7 +18,14 @@ int main(int argc , char **argv)
 
     // initialize the data
     std::cout << "Iniciando datos ...\n";
-    initialize(data);
+
+    auto flambda =[](std::vector<double> & x){
+        for(int ii = 0; ii < x.size(); ii++) {
+        x[ii] = ii;
+        }
+    };
+
+    flambda(data);
 
     // compute the average
     std::cout << "Calculando promedio ...\n";
@@ -29,13 +35,7 @@ int main(int argc , char **argv)
     std::cout << avg << "\n";
 
     return 0;
-}
-
-void initialize(std::vector<double> & data){
-    for(int ii = 0; ii < data.size(); ii++) {
-        data[ii] = ii;
-    }
-}
+}    
 
 double average(const std::vector<double> & x)
 {

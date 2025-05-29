@@ -2,9 +2,9 @@
 
 int main(int argc , char **argv){
 
-    std::vector<double> v={1,0,0,2};
     std::vector<double> u={1,2,-10,3};
-
+    std::vector<double> v={1,0,0,2};
+    
     std::cout.precision(16);
 
     std::cout << vector_norm(v) << "\n";
@@ -24,8 +24,6 @@ int main(int argc , char **argv){
     std::cout << *maxit << "\t" << argmax(u) << "\n";
 
     std::cout << p_norm(v,3) << "\n";
-
-    
 
     return 0;
 }

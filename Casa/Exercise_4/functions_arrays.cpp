@@ -19,3 +19,27 @@ std::vector<double> poly_deriv(std::vector<double> v){
 
     return v;
 }
+
+long int argmax(const std::vector<double> & u){
+    auto maxit = std::max_element(u.begin(),u.end());
+    auto maxin = std::distance(u.begin(),maxit);
+
+    return maxin;
+}
+
+long int argmin(const std::vector<double> & u){
+    auto minit = std::min_element(u.begin(),u.end());
+    auto minin = std::distance(u.begin(),minit);
+
+    return minin;
+}
+
+double p_norm(const std::vector<double> & u, long long int p){
+    double sum{0};
+    
+    for (auto val : u){
+        sum+=std::pow(val,p);
+    }
+
+    return std::pow(sum,1.0/p);
+}

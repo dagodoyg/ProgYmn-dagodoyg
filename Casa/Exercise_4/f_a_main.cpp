@@ -18,14 +18,14 @@ int main(int argc , char **argv){
 
 
     auto minit = std::min_element(u.begin(),u.end());
-    auto minin = std::distance(u.begin(),minit);
-    std::cout << *minit << "\t" << minin << "\n";
+    std::cout << *minit << "\t" << argmin(u) << "\n";
  
     auto maxit = std::max_element(u.begin(),u.end());
-    auto maxin = std::distance(u.begin(),maxit);
-    std::cout << *maxit << "\t" << maxin << "\n";
+    std::cout << *maxit << "\t" << argmax(u) << "\n";
 
+    std::cout << p_norm(v,3) << "\n";
 
+    
 
     return 0;
 }

@@ -89,8 +89,38 @@ void fill_randomly(std::vector<double> & u){
     }
 }
 
-void v_printer(const std::vector<double> & u){
+
+void int_counter_histogram(std::vector<int> u){
+    std::sort(u.begin(),u.end());
+    int aux=u[0];
+    int num{0};
+    std::vector<int> result;
+    long long int count{0};
+
     for (auto val : u){
-        std::cout << val << "\n";
+        if (val==aux){
+            count++;
+        }   else {
+            result.push_back(aux);
+            result.push_back(count);
+            count=1;
+            num++;
+            aux=val;
+        }
     }
+
+    result.push_back(aux);
+    result.push_back(count);
+    num++;
+    
+    for (int ii{0}; ii < num; ii++){
+        std::cout << result[ii*2] << "|";
+
+        for (int kk{0}; kk<result[ii*2+1]; kk++){
+            std::cout << "*";
+        }
+
+        std::cout << "\n";
+    }
+
 }

@@ -39,3 +39,5 @@ void matrix_printer(const std::vector<T> & u,int m,int n){
 }
 
 void int_counter_histogram(std::vector<int> u);
+std::vector<double> dbl_counter_histogram(const std::vector<double> & u, double delta);
+std::vector<double> weibull_vector(int N, double shape, double scale, int seed);

@@ -97,7 +97,7 @@ void int_counter_histogram(std::vector<int> u){
     std::vector<int> result;
     long long int count{0};
 
-    for (auto val : u){
+    for (const auto &val : u){
         if (val==aux){
             count++;
         }   else {
@@ -112,7 +112,7 @@ void int_counter_histogram(std::vector<int> u){
     result.push_back(aux);
     result.push_back(count);
     num++;
-    
+
     for (int ii{0}; ii < num; ii++){
         std::cout << result[ii*2] << "|";
 
@@ -123,4 +123,44 @@ void int_counter_histogram(std::vector<int> u){
         std::cout << "\n";
     }
 
+}
+
+std::vector<double> weibull_vector(int N, double shape, double scale, int seed){
+
+    std::vector<double> result;
+    std::mt19937 gen(seed);
+    std::weibull_distribution<double> weibull(shape, scale);
+    
+    for (int ii{0}; ii < N; ii++){
+        result.push_back(weibull(gen));
+    }
+    
+    return result;
+}
+
+std::vector<double> dbl_counter_histogram(const std::vector<double> & u, double delta){
+
+    const double max_element=u[argmax(u)];
+    const double min_element=u[argmin(u)];
+    const long long int intervals = static_cast<int>(std::ceil((max_element - min_element) / delta));
+    std::vector<double> result(2*intervals,0.0);
+    long long int idx{0};
+    
+
+    for (int ii = 0; ii < intervals; ii++){
+        result[ii*2]=min_element + (ii+1)*delta;
+    }
+   
+    for (const auto &val : u){
+        if (val==min_element){
+            idx=0;
+        } else {
+        idx = static_cast<int>(std::floor( (val-min_element) / delta ));
+        }
+        
+        result[idx*2+1]++;
+    }
+    
+
+    return result;
 }

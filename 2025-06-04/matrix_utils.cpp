@@ -209,13 +209,11 @@ bool matrix_is_inverse (const std::vector<double> & A, const std::vector<double>
 
             if (check1>epsilon || check2>epsilon){
                 flag=false;
-                goto end;
+                return flag;
             }
 
         }     
     }
-
-    end:
 
     return flag;
 

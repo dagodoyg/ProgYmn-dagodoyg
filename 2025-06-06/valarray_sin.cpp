@@ -9,21 +9,16 @@ int main(int argc, char **argv){
 
     std::valarray<double> x(N);
     std::valarray<double> y(N);
-    std::valarray<bool> aux1;
 
     std::iota(std::begin(x), std::end(x), 0);
     x *= interval;
 
     y = sin(x);
-    
-    aux1 = std::abs(y)<=0.5;
-    int c = std::count(std::begin(aux1), std::end(aux1),true);
 
-    std::valarray<double> aux2(c);
-    aux2 = y[aux1];
+    std::valarray<double> aux = x[std::abs(y) <= 0.5];
 
-    for(std::size_t n = 0; n < aux2.size(); ++n)
-    std::cout << aux2[n] << ' ';
+    for(std::size_t n = 0; n < aux.size(); ++n)
+    std::cout << aux[n] << ' ';
     std::cout << "\n";
 
     return 0;

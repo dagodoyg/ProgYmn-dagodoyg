@@ -9,10 +9,9 @@ double xq(double q, double alpha, double beta);
 
 using fptr = std::function<double(double)>;
 double gauss_7(double a, double b, fptr fun);
-double newton_root(double q, double alpha, double beta,double epsilon);
 
 int main(void){
-    std::cout << newton_root(0.5,1.0,1.0,1e-6) << "\n";
+    std::cout << xq(0.5,1.0,1.0) << "\n";
 }
 
 double f(double x, double alpha, double beta){
@@ -65,24 +64,4 @@ double gauss_7(double a, double b, fptr fun){
     }
 
     return m*result;
-}
-
-double newton_root(double q, double alpha, double beta,double epsilon){
-    double behind = 1;
-    double ahead = behind;
-    double aux{0};
-
-    auto fun = [alpha,beta](double x){
-        return f(x,alpha,beta);
-    };
-
-    do
-    {
-        aux=ahead;
-        ahead = behind - gauss_7(0,behind,fun)/fun(behind);
-        behind = aux;
-    } while (std::abs(ahead-behind)>epsilon);
-    
-
-    return ahead;
 }

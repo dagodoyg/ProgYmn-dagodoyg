@@ -95,8 +95,9 @@ pts_table = pd.DataFrame({'x': x, 'y': y}, index=row_names)
 # pts_table.to_csv("SelectedPoints.csv")
 
 # === EXPORTAR TODO A EXCEL ===
-with pd.ExcelWriter("Valores_RGB_2.xlsx", engine="xlsxwriter") as writer:
+with pd.ExcelWriter("Valores_RGB.xlsx", engine="xlsxwriter") as writer:
     RedValuesTable.to_excel(writer, sheet_name="Rojo")
     GreenValuesTable.to_excel(writer, sheet_name="Verde")
     BlueValuesTable.to_excel(writer, sheet_name="Azul")
     pts_table.to_excel(writer, sheet_name="Puntos")
+

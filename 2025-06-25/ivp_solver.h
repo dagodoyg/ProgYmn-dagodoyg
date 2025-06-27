@@ -67,7 +67,7 @@ void integrate_RK4(deriv_t fderiv, system_t & s, double tinit, double tend, doub
     system_t k3(s.size());
     system_t k4(s.size());
 
-    std::ofstream heun("data_heun.txt");
+    std::ofstream heun("data_RK4.txt");
 
     // time loop
     for(double t = tinit; t <= tend; t = t + dt) { // NOTE: Last time step not necessarily tf

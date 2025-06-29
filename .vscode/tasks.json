@@ -5,11 +5,14 @@
             "label": "C/C++: g++.exe build active file",
             "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
             "args": [
+                "${file}",
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-IC:/Users/david/opencv_build/install/include",
+                "-LC:/Users/david/opencv_build/install/x64/mingw/lib",
+                "-lopencv_world4120"
             ],
             "options": {
                 "cwd": "${fileDirname}"

@@ -3,7 +3,13 @@
     {
       "name": "windows-gcc-x64",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/**",
+        "C:/Users/david/opencv_build/install/include",
+        "C:/Users/david/opencv_build/install/include/opencv2",
+        "C:/Users/david/opencv_build/install/x64/mingw/lib",
+        "C:/Users/david/src/dlib/build/install/include",
+        "C:/Users/david/src/dlib/build/install/lib" 
       ],
       "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
       "cStandard": "${default}",

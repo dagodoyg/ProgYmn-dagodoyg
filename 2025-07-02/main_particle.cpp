@@ -26,15 +26,13 @@ int main(int argc, char **argv) {
   TimeIntegrator integrator(p["DT"]);
 
   // Boundary conditions
-  Boundary bc(2.345, 0.0, 0.0, 0.0, 1.0, 1.0); // RMAX, CX, CY, CZ, EN, ET
+  Boundary bc(2.345, 0.0, 0.0, 0.0, 1.0); // RMAX, CX, CY, CZ, EN
 
   // initial conditions and properties
   initial_conditions(bodies);
   collider.computeForces(bodies); // force at t = 0
   integrator.startIntegration(bodies); // start integration algorithm
-  std::cout << p["T0"] << "\t";
-  bodies[0].print();
-  std::cout << "\n";
+  bodies[0].print(0, "./DISPLAY/");
 
   // Time iteration
   const int niter = int((p["TF"] - p["T0"])/p["DT"]);
@@ -43,9 +41,7 @@ int main(int argc, char **argv) {
     integrator.timeStep(bodies);
     bc.apply(bodies);
     double time = p["T0"] + ii*p["DT"];
-    std::cout << time << "\t";
-    bodies[0].print();
-    std::cout << "\n";
+    bodies[0].print(ii, "./DISPLAY/");
   }
 
   return 0;

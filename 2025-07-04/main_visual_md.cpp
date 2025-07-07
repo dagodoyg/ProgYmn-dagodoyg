@@ -11,8 +11,7 @@
 void initial_conditions(std::vector<Particle> & particles);
 
 int main(int argc, char **argv) {
-  std::vector<Particle> bodies;
-  bodies.resize(4); // only one particle for now
+  std::vector<Particle> bodies(1); // only one particle for now
 
   // parameters
   std::map<std::string, double> p;
@@ -40,14 +39,15 @@ int main(int argc, char **argv) {
   collider.computeForces(bodies); // force at t = 0
   integrator.startIntegration(bodies); // start integration algorithm
   std::cout << p["T0"] << "\t";
-  std::cout << "\n";
 
   // --- VISUALIZATION SETUP ---
   sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "C++ Simulation & Visualization");
   window.setFramerateLimit(120);
+   std::cout << "a "<< "\n";
   sf::CircleShape particle_shape(bodies[0].rad);
   particle_shape.setFillColor(sf::Color::Cyan);
   particle_shape.setOrigin(0, 0);
+  std::cout << true << std::endl;
 
   sf::CircleShape circle(2.345*METERS_TO_PIXELS); // Radius of 50 pixels
   circle.setFillColor(sf::Color::Green);
@@ -107,24 +107,6 @@ void initial_conditions(std::vector<Particle> & particles)
 {
   particles[0].R[2] = 0.987;  // z is upwards, x to the right
   particles[0].V[1] = 4.9876;//12.987; // z is upwards, x to the right
-  particles[0].V[2] = 0.0; //4.9876; //3.987; // z is upwards, x to the right
-  particles[0].rad  = 0.103;
-  particles[0].mass = 0.337;
-
-  particles[0].R[2] = 0;  // z is upwards, x to the right
-  particles[0].V[2] = 4.9876;//12.987; // z is upwards, x to the right
-  particles[0].V[2] = 0.0; //4.9876; //3.987; // z is upwards, x to the right
-  particles[0].rad  = 0.103;
-  particles[0].mass = 0.337;
-
-  particles[0].R[1] = 0.987;  // z is upwards, x to the right
-  particles[0].V[1] = 2;//12.987; // z is upwards, x to the right
-  particles[0].V[2] = 0.0; //4.9876; //3.987; // z is upwards, x to the right
-  particles[0].rad  = 0.103;
-  particles[0].mass = 0.337;
-
-  particles[0].R[3] = 0.987;  // z is upwards, x to the right
-  particles[0].V[0] = 4.9876;//12.987; // z is upwards, x to the right
   particles[0].V[2] = 0.0; //4.9876; //3.987; // z is upwards, x to the right
   particles[0].rad  = 0.103;
   particles[0].mass = 0.337;
